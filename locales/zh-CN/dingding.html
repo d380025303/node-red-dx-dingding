@@ -1,0 +1,41 @@
+<script type="text/html" data-help-name="ddConfig">
+    <p>
+        钉钉配置
+    </p>
+    <p>clientId clientSecret: 在创建应用后"基础信息/凭证与基础信息"页签</p>
+    <p>robotCode: clientSecret 在创建应用后"应用能力/机器人"页签</p>
+</script>
+
+<script type="text/html" data-help-name="ddMsgIn">
+    <p>
+        用于接受钉钉消息
+    </p>
+
+    <h3>Output</h3>
+    <p><code>msg.payload</code>用于输出消息内容</p>
+    <p>如果是收到的消息为文本, 则输出字符串</p>
+    <p>如果是收到的消息为图片, 则输出二进制流</p>
+    <p>剩余的消息类型, 暂时未支持</p>
+    <p>消息类型会输出在<code>msg.ddMsgType</code>中, text为文本, picture为图片</p>
+    <p>原始数据会输出在<code>msg.ddSource</code>中</p>
+</script>
+
+<script type="text/html" data-help-name="ddMsgResponse">
+    <p>
+        用于回复来自钉钉的消息
+    </p>
+
+    <h3>Input</h3>
+    <p><code>msg.payload</code>用于接收消息内容，目前只支持回复文本消息, 所以<code>msg.payload</code>的内容只能为字符串</p>
+</script>
+
+<script type="text/html" data-help-name="ddTextMsg">
+    <p>
+        用于主动发送文本消息
+    </p>
+
+    <h3>Input</h3>
+    <p><code>msg.payload</code>用于接收消息内容，如果"内容"节点已配置, 则<code>msg.payload</code>内容不会生效</p>
+    <p>"钉钉用户ID"用于配置接收人，该字段可以在"接受钉钉消息"<code>msg.ddSource</code>中找到, 为data.senderStaffId的值</p>
+</script>
+

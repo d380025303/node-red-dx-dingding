@@ -1,0 +1,28 @@
+{
+  "name" : "node-red-dx-dingding",
+  "version": "0.0.1",
+  "author": {
+    "name": "DX",
+    "url": "https://github.com/d380025303"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/d380025303/node-red-dx-nodered-test.git"
+  },
+  "keywords": [
+    "node-red",
+    "nodered",
+    "dingding",
+    "钉钉"
+  ],
+  "dependencies": {
+    "axios": "^1.4.0",
+    "dingtalk-stream": "^2.1.4"
+  },
+  "license": "Apache-2.0",
+  "node-red" : {
+    "nodes": {
+      "dingding": "dingding.js"
+    }
+  }
+}

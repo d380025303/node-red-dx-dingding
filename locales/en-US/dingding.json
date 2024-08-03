@@ -1,0 +1,21 @@
+{
+  "dd": {
+    "label": {
+      "name": "Name",
+      "clientId": "Client Id",
+      "clientSecret": "Client Secret",
+      "robotCode": "Robot Code",
+      "ddMsgIn": "Message In",
+      "ddMsgResponse": "Message Response",
+      "dingding": "Dingding",
+      "ddTextMsg": "Send Text Message",
+      "userIds": "User Ids",
+      "textContent": "Content",
+      "ddConfig": "Dingding Config"
+    },
+    "conn": {
+      "connect": "connect",
+      "disconnect": "disconnect"
+    }
+  }
+}

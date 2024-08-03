@@ -1,0 +1,191 @@
+<script type="text/html" data-template-name="ddConfig">
+    <div class="form-row">
+        <label for="node-config-input-name">
+            <span data-i18n="dd.label.name"></span>
+        </label>
+        <input type="text" id="node-config-input-name"  />
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-clientId">
+            <span data-i18n="dd.label.clientId"></span>
+        </label>
+        <input type="text" id="node-config-input-clientId" />
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-clientSecret">
+            <span data-i18n="dd.label.clientSecret"></span>
+        </label>
+        <input type="text" id="node-config-input-clientSecret" />
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-robotCode">
+            <span data-i18n="dd.label.robotCode"></span>
+        </label>
+        <input type="text" id="node-config-input-robotCode" />
+    </div>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('ddConfig', {
+        category: 'config',
+        defaults: {
+            name: {
+                value: '',
+            },
+            clientId: {
+                value: '',
+                required: true,
+            },
+            clientSecret: {
+                value: '',
+                required: true,
+            },
+            robotCode: {
+                value: '',
+            },
+        },
+        label: function () {
+            return this.name || this._('dd.label.ddConfig');
+        },
+        labelStyle: function () {
+            return this.name ? 'node_label_italic' : '';
+        },
+    });
+</script>
+
+
+<script type="text/javascript">
+    RED.nodes.registerType('ddMsgIn', {
+        category: 'network',
+        color: '#0089ff',
+        defaults: {
+            name: {
+                value: '',
+            },
+            ddConfig: {
+                type: 'ddConfig',
+                required: true,
+            },
+        },
+        outputs: 1,
+        inputs: 0,
+        icon: 'dingding.png',
+        align: 'left',
+        label: function () {
+            return this.name || this._('dd.label.ddMsgIn');
+        },
+        labelStyle: function () {
+            return this.name ? 'node_label_italic' : '';
+        },
+        oneditprepare: function () {
+        },
+    });
+</script>
+
+<script type="text/html" data-template-name="ddMsgIn">
+    <div class="form-row">
+        <label for="node-input-name">
+            <span data-i18n="dd.label.name"></span>
+        </label>
+        <input type="text" id="node-input-name" data-i18n="[placeholder]dd.label.name" />
+    </div>
+    <div class="form-row">
+        <label for="node-input-ddConfig">
+            <span data-i18n="dd.label.ddConfig"></span>
+        </label>
+        <input type="text" id="node-input-ddConfig" />
+    </div>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('ddMsgResponse', {
+        category: 'network',
+        color: '#0089ff',
+        defaults: {
+            name: {
+                value: '',
+            },
+        },
+        outputs: 0,
+        inputs: 1,
+        icon: 'dingding.png',
+        align: 'left',
+        label: function () {
+            return this.name || this._('dd.label.ddMsgResponse');
+        },
+        labelStyle: function () {
+            return this.name ? 'node_label_italic' : '';
+        },
+        oneditprepare: function () {
+        },
+    });
+</script>
+
+<script type="text/html" data-template-name="ddMsgResponse">
+    <div class="form-row">
+        <label for="node-input-name">
+            <span data-i18n="dd.label.name"></span>
+        </label>
+        <input type="text" id="node-input-name" />
+    </div>
+</script>
+
+
+<script type="text/javascript">
+    RED.nodes.registerType('ddTextMsg', {
+        category: 'network',
+        color: '#0089ff',
+        defaults: {
+            name: {
+                value: '',
+            },
+            content: {
+                value: ''
+            },
+            ddConfig: {
+                type: 'ddConfig',
+                required: true,
+            },
+            userIds: {
+                value: ''
+            }
+        },
+        outputs: 0,
+        inputs: 1,
+        icon: 'dingding.png',
+        align: 'left',
+        label: function () {
+            return this.name || this._('dd.label.ddTextMsg');
+        },
+        labelStyle: function () {
+            return this.name ? 'node_label_italic' : '';
+        },
+    });
+</script>
+
+<script type="text/html" data-template-name="ddTextMsg">
+    <div class="form-row">
+        <label for="node-input-name">
+            <span data-i18n="dd.label.name"></span>
+        </label>
+        <input type="text" id="node-input-name" />
+    </div>
+    <div class="form-row">
+        <label for="node-input-ddConfig">
+            <span data-i18n="dd.label.ddConfig"></span>
+        </label>
+        <input type="text" id="node-input-ddConfig" />
+    </div>
+    <div class="form-row">
+        <label for="node-input-userIds">
+            <span data-i18n="dd.label.userIds"></span>
+        </label>
+        <input type="text" id="node-input-userIds" />
+    </div>
+    <div class="form-row">
+        <label for="node-input-content">
+            <span data-i18n="dd.label.textContent"></span>
+        </label>
+        <input type="text" id="node-input-content" />
+    </div>
+</script>

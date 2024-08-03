@@ -1,0 +1,40 @@
+<script type="text/html" data-help-name="ddConfig">
+    <p>
+        DingTalk Configuration
+    </p>
+    <p>clientId clientSecret: After creating the application, go to the "Basic Information/Credentials and Basic Information" tab</p>
+    <p>robotCode: clientSecret After creating the application, go to the "Application Capabilities/Robot" tab</p>
+</script>
+
+<script type="text/html" data-help-name="ddMsgIn">
+    <p>
+        Used for receiving DingTalk messages
+    </p>
+
+    <h3>Output</h3>
+    <p><code>msg.payload</code> is used to output the message content</p>
+    <p>If the received message is text, a string is output</p>
+    <p>If the received message is an image, a binary stream is output</p>
+    <p>Other message types are not supported yet</p>
+    <p>The message type will be output in <code>msg.ddMsgType</code>, where text is text and picture is an image</p>
+    <p>The original data will be output in <code>msg.ddSource</code></p>
+</script>
+
+<script type="text/html" data-help-name="ddMsgResponse">
+    <p>
+        Used for replying to messages from DingTalk
+    </p>
+
+    <h3>Input</h3>
+    <p><code>msg.payload</code> is used to receive the message content. Currently, only text messages can be replied to, so the content of <code>msg.payload</code> must be a string</p>
+</script>
+
+<script type="text/html" data-help-name="ddTextMsg">
+    <p>
+        Used for actively sending text messages
+    </p>
+
+    <h3>Input</h3>
+    <p><code>msg.payload</code> is used to receive the message content. If the "Content" node is configured, the content of <code>msg.payload</code> will not take effect</p>
+    <p>"DingTalk User ID" is used to configure the recipient. This field can be found in the "Receive DingTalk Messages" <code>msg.ddSource</code>, as the value of data.senderStaffId</p>
+</script>

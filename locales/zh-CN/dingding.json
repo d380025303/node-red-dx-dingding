@@ -1,0 +1,21 @@
+{
+  "dd": {
+    "label": {
+      "name": "名称",
+      "clientId": "Client Id",
+      "clientSecret": "Client Secret",
+      "robotCode": "Robot Code",
+      "ddMsgIn": "接收钉钉消息",
+      "ddMsgResponse": "消息返回",
+      "dingding": "Dingding",
+      "ddTextMsg": "发送文本消息",
+      "userIds": "钉钉用户ID",
+      "textContent": "内容",
+      "ddConfig": "钉钉配置"
+    },
+    "conn": {
+      "connect": "已连接",
+      "disconnect": "断开连接"
+    }
+  }
+}
