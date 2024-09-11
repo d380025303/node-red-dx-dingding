@@ -15,6 +15,7 @@ module.exports = function (RED) {
         this.client = new DWClient({
             clientId: n.clientId,
             clientSecret: n.clientSecret,
+            keepAlive: true,
         });
     });
 
@@ -23,17 +24,6 @@ module.exports = function (RED) {
         RED.nodes.createNode(node, config);
         const ddConfig = RED.nodes.getNode(config.ddConfig)
         const client = ddConfig.client
-        let connected = false
-        setInterval(function () {
-            const nowConn = client.connected
-            if (nowConn !== connected) {
-                node.status({
-                    fill: nowConn ? "green" : "red",
-                    shape:"ring",
-                    text: nowConn ? RED._('dd.conn.connect') : RED._('dd.conn.disconnect')
-                });
-            }
-        }, 5000);
 
         client.registerCallbackListener(TOPIC_ROBOT, async (res) => {
             const data = JSON.parse(res.data)
@@ -79,6 +69,24 @@ module.exports = function (RED) {
             node.send(msg)
             client.socketCallBackResponse(res.headers.messageId, '');
         }).connect();
+
+        let isAlive = false
+        setInterval(async function () {
+            const nowIsAlive = client.isAlive
+            if (isAlive !== nowIsAlive) {
+                node.status({
+                    fill: nowIsAlive ? "green" : "red",
+                    shape:"ring",
+                    text: nowIsAlive ? RED._('dd.conn.connect') : RED._('dd.conn.disconnect')
+                });
+            }
+            if (!nowIsAlive || !isAlive) {
+                node.log('nowIsAlive...........')
+                client.disconnect()
+                await client.connect()
+            }
+            isAlive = nowIsAlive
+        }, 5000);
     });
 
     RED.nodes.registerType('ddMsgResponse', function (config) {
